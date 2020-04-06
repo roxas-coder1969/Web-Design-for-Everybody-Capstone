@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAME5V</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/motor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <h2 class="logo">GAME5V</h2>
+        <ul>
+            <li><a>Home</a></li>
+            <li><a>Colection</a></li>
+            <li><a>Download</a></li>
+            <li><a>Gallery</a></li>
+            <li><a>Contact</a></li>
+        </ul>
+        <div class="search">
+            
+                <input type="text" name="search" id="sh" required placeholder="Enter your search">
+                <button type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="slides">
+                <img src="./image/1.jpg" alt="">
+                <div class="content">
+                    <h2>Nơi Hội Tụ Của Các Game Thủ</h2>
+                    <p>
+                        Một Khi Vào Đây Bạn Đã Trở Thành Game Thủ<br>
+                        Nơi Hội Tụ Các Tin Tức Game Và Sự kiện<br>
+                        Và Các Trò Chơi Trúng Thưởng
+
+
+                    </p>
+                    <a>Explore &#8594</a>
+                </div>
+            </div>
+            <div class="slides">
+                <img src="./image/2.jpg" alt="">
+                <div class="content">
+                    <h2>Tin Tức Về Game Và Các Sự kiện</h2>
+                    <p>
+                         Cùng nhau tìm hiểu và các sự kiện trong ngày<br>
+                         Và Một số tip về game và đời sống
+
+                    </p>
+                    <a>Explore &#8594</a>
+                </div>
+            </div>
+            <div class="slides">
+                <img src="./image/3.jpg" alt="">
+                <div class="content">
+                    <h2>Download</h2>
+                    <p>
+                        Tải một số tựa game cũ<br>và cùng nhau quay lại những kí ức tuổi thơ
+                    </p>
+                    <a>Explore &#8594</a>
+                </div>
+            </div>
+            <div class="slides">
+                <img src="./image/4.jpg" alt="">
+                <div class="content">
+                    <h2>About us</h2>
+                    <p>
+                        Đây là một dự án còn đang phát triển<br>Nên chưa hoàn thiện và sẽ sớm hoàn thành trong năm 20XX
+                    </p>
+                    <a>Explore &#8594</a>
+                </div>
+            </div>
+        </div>
+        <!-- slide small -->
+        <div class="slides-small">
+            <div class="thumb effect">
+                <!-- <img src="./image/ducati_v4.jpg" alt=""> -->
+                <!-- <i class="fa fa-bookmark"></i> -->
+            </div>
+            <div class="thumb">
+                <!-- <img src="./image/unnamed.png" alt=""> -->
+                <!-- <i class="fa fa-bookmark"></i> -->
+            </div>
+            <div class="thumb">
+                <!-- <img src="./image/suzuki-logo-5311518DD9-seeklogo.com.png" alt=""> -->
+                <!-- <i class="fa fa-bookmark"></i> -->
+            </div>
+            <div class="thumb">
+                <!-- <img src="./image/lamborghini-logo.png" alt=""> -->
+                <!-- <i class="fa fa-bookmark"></i> -->
+            </div>
+        </div>
+        <!-- next & previous button -->
+        <a href="#" class="prev">&#171</a>
+        <a href="#" class="next">&#187</a>
+
+        <!-- dot/ circle nav -->
+        <div class="nav">
+            <span class="dot active">1</span>
+            <span class="dot">2</span>
+            <span class="dot">3</span>
+            <span class="dot">4</span>
+        </div>
+    </section>
+
+    <script>
+        const next = document.querySelector('.next');
+        const prev = document.querySelector('.prev');
+        const dots = document.querySelectorAll('.dot');
+        const slide = document.querySelectorAll('.slides');
+        let index = 1;
+        function show(n){
+            if(n>slide.length){index = 1}
+            if(n<1){index = slide.length};
+            let i;
+            for(i=0; i<slide.length; i++){
+                slide[i].style.transform = `translateX(0)`;
+                slide[i].className = slide[i].className.replace(" fade", " ");
+            } 
+            slide[index-1].style.transform = `translateX(-${(index-1)*100}%)`;
+            slide[index-1].className += " fade";
+            // dot
+            for(i=0; i<dots.length; i++){
+                dots[i].className = dots[i].className.replace(" active", " ");
+            }
+            dots[index-1].className += " active";
+        }        
+        next.addEventListener('click', ()=>{
+                show(index += 1);
+                thumb[1].classList.add('effect');
+                setTimeout(()=>{
+                    next_small_slide();
+                }, 0);
+                
+            });
+        prev.addEventListener('click', ()=>{
+                show(index -= 1);
+                thumb[0].classList.remove('effect');
+                setTimeout(() => {
+                    prev_small_slide();
+                }, 0);
+                
+            }); 
+        // -----slides-small
+        const thumb = document.querySelectorAll('.thumb');
+        let thumbArray = [];
+        for(let i=0; i<thumb.length; i++){
+            thumbArray[i] = thumb[i].innerHTML;
+        }
+        function next_small_slide(){
+            let change = thumbArray.shift();
+            thumbArray.push(change);
+            for(let i=0; i<thumb.length;i++){
+                thumb[i].innerHTML = thumbArray[i];
+            }
+            thumb[1].classList.remove('effect');
+        }
+        function prev_small_slide() {
+            let change = thumbArray.pop();
+            thumbArray.unshift(change);
+            for (let i = 0; i < thumb.length; i++) {
+                thumb[i].innerHTML = thumbArray[i];
+            }
+            thumb[0].classList.add('effect');
+        }      
+    </script>
+</body>
+</html>

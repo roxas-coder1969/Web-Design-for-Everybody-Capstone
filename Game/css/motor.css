@@ -1,0 +1,312 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Oswald', sans-serif;
+}
+body{
+    min-height: 100vh;
+    perspective: 1000px;
+    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+}
+header{
+    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 50px;
+    align-items: center;
+    cursor: pointer;
+}
+.logo{
+    font-size: 2em;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-left: 60px;
+    color: whitesmoke;
+    text-shadow: 0 0 5px black;
+    letter-spacing: 4px;
+}
+ul li{
+    list-style:  none;
+    display: inline-block;
+    padding: 15px;
+}
+ul li a{
+    text-decoration: none;
+    transform: uppercase;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.6);
+    text-shadow: 0 0 5px black;
+    font-size: 16px;
+}
+ul li a:hover{
+    color: white;
+}
+.search{
+    width: 350px;
+    height: 30px;
+    position: relative;
+    margin-right: 20px;
+    border-radius: 7px;
+    overflow: hidden;
+}
+input{
+    width: 100%;
+    height: 100%;
+    padding-right: 35px;
+    padding-left: 5px;
+    outline: none;
+    border: none;
+}
+.fa.fa-search{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #000000;
+    width: 30px;
+    height: 30px;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+}   
+/* ---------------------------------section--------------------------- */
+section{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+.container{
+    width: 400%;
+    display: flex;
+}
+.slides{
+    position: relative;
+    width: 100%;
+}
+.slides img{
+    width: 100%;
+    height: 100vh;
+    display: block;
+    object-fit: cover;
+}
+.content{
+    max-width: 500px;
+    width: 100%;
+    position: absolute;
+    top: 25%;
+    left: 200px;
+    color: whitesmoke;
+    font-size: 90%;
+}
+.content h2{
+    font-size: 5em;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 5px;
+    text-shadow: 0 0 4px black;
+}
+.content p{
+    text-shadow: 0 0 20px black;
+}
+.content a{
+    color: whitesmoke;
+    text-decoration: none;
+    background: red;
+    padding:  10px 25px;
+    display: inline-block;
+    margin-top: 30px;
+    border-radius: 10px;
+    font-size: 120%;
+}
+/*------------nav menu------------- */
+
+.prev, .next{
+    cursor: pointer;
+    position: fixed;
+    left: 77%;
+    bottom: 50px;
+    font-size: 77px;
+    color: rgba(77, 75, 75, 0.774);
+    text-decoration: none;
+    user-select: none;
+    z-index: 99;
+    font-weight: bold;
+}
+.next{
+    left: 85%;
+}
+.nav{
+    position: fixed;
+    top: 15vh;
+    left: 100px;
+    width: 30px;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 70vh;
+    align-items: center;
+    cursor: pointer;
+}
+.nav::before{
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    background: #fff5;
+}
+.dot{
+    color: white;
+    width: 20px;
+    height: 20px;
+    background:black;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 11px;
+    transform: scale(0.5); 
+    border: 1px solid whitesmoke;
+}
+.dot.active{
+    transform: scale(1.3);
+    transition: 0.5s linear;
+}
+.fade{
+    animation: fade 1.0s ease-in-out;
+}
+@keyframes fade{
+    from{opacity: 0.4;}
+    to{opacity: 1;}
+}
+/*---------------------slides-small-------------- */
+.slides-small{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 90%;
+    width: 900px;
+    height: 300px;
+    position: absolute;
+    top: 60%;
+    right: 0;
+    overflow: hidden;
+    transform: translateX(55%) translateY(-50%) rotateY(0deg) translateZ(100px);
+    display: flex;
+    align-items: center;
+}
+.thumb{
+    min-width: 200px;
+    height: 85%;
+    padding: 10px 15px;
+    position: relative;
+    box-shadow: 8px 5px 9px 2px black;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.thumb img{
+    width: 100%;
+    height: 80%;
+    display: block;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.thumb p{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-weight: 900;
+    color: white;
+    letter-spacing: 2px;
+    text-shadow: 0 0 4px black;
+}
+.fa.fa-bookmark{
+    position: absolute;
+    top: 50px;
+    right: 23px;
+    background: #ddd;
+    padding: 8px;
+    border-radius: 50%;
+}
+.effect{
+    height: 100%;
+}
+/* -------------media query responsive-------------- */
+@media (max-width: 1250px){
+    .content{
+        max-width: 400px;
+    }
+    .slides-small{
+        width: 500px;
+        height: 250px;
+    }
+    .thumb p{
+        font-size: 12px;
+    }
+}
+@media (max-width: 1050px){
+    .content{
+        max-width: 250px;
+        font-size: 70%;
+    }
+}
+@media (max-width: 960px){
+    .search{
+        width: 200px;
+    }
+    .slides-small{
+        width: 400px;
+    }
+    .prev, .next{
+        left: 45%;
+        bottom: 10px;
+        font-size: 45px;
+    }
+    .next{
+        left: 55%;
+    }
+}
+@media (max-width: 800px){
+    ul li{
+        padding: 5px;
+    }
+    .content{
+        top: 80px;
+        left: 100px;
+    }
+    .nav{
+        left:50px;
+    }
+}
+@media (max-width: 700px){
+    .slides-small{
+        width: 230px;
+        top: 65%;
+    }
+    .content h2{
+        font-size: 3em;
+    }
+    .search{
+        width: 170px;
+        margin-right: 5px;
+    }
+}
+@media (max-width: 600px){
+    .content{
+        left: 60px;
+    }
+    .nav{
+        left: 0;
+    }
+    ul{
+        position: fixed;
+        top: 40px;
+    }
+    .search{
+        width: 300px;
+    }
+}
